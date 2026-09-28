@@ -40,15 +40,18 @@ int main() {
 ### Output Unguided 1 :
 
 ##### Output 1
-![Screenshot Output Unguided 1_1](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-1_Modul-1/output-unguided-1.1.png?raw=true)
+![Screenshot Output Unguided 1_1](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-1_Modul-1/Output/output-unguided-1.1.png?raw=true)
 
 
 ##### Output 2
-![Screenshot Output Unguided 1_2](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-1_Modul-1/output-unguided-1.2.png?raw=true)
+![Screenshot Output Unguided 1_2](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-1_Modul-1/Output/output-unguided-1.2.png?raw=true)
 
 Program di atas merupakan program yang berfungsi untuk melakukan operasi hitung matematika dasar hanya dengan menginputkan dua buah angka bilangan real. Setelah itu program akan memproses kedua nilai tersebut dengan penjumlahan, pengurangan, perkalian, dan pembagian bilangan pertama dengan bilangan kedua. Setelah proses perhitungan dilakukan, maka program akan mencetak hasil akhir dari masing-masing operasi penjumlahan, pengurangan, perkalian, dan pembagian tersebut ke layar.
 
 ### 2. Buatlah sebuah program yang menerima masukan angka dan mengeluarkan output nilai angka tersebut dalam bentuk tulisan. Angka yang akan di- input-kan user adalah bilangan bulat positif mulai dari 0 s.d 100
+
+![Screenshot Menu Utama](https://lh3.googleusercontent.com/keep-bbsk/AFgXFlJjQYZa8eOa-hLZUBGYYFxpIIUPwefxdu2NJsaMq9EcBnsxDd-gA-bDPN-LFEvLaAGNkV98OddtB21gsDvmeggyfa1oaMSFuBTyVuk_KKsJCTpBZc8g=s512)
+
 
 ```C++
 #include <iostream>
@@ -96,15 +99,17 @@ int main() {
 ### Output Unguided 2 :
 
 ##### Output 1
-![Screenshot Output Unguided 2_1](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-1_Modul-1/output-unguided-2.1.png?raw=true)
+![Screenshot Output Unguided 2_1](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-1_Modul-1/Output/output-unguided-2.1.png?raw=true)
 
 
 ##### Output 2
-![Screenshot Output Unguided 2_2](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-1_Modul-1/output-unguided-2.2.png?raw=true)
+![Screenshot Output Unguided 2_2](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-1_Modul-1/Output/output-unguided-2.2.png?raw=true)
 
 Program di atas berfungsi untuk mengonversi input angka (0-100) menjadi teks tulisan. Program ini bekerja memadukan kondisi if-else, array penyimpan teks, serta operator pembagian (/) dan modulo (%). Angka khusus seperti 0, 10, 11, dan 100 akan dicetak teksnya secara langsung. Sementara untuk angka belasan dan puluhan, program memecah digit angkanya menggunakan operator pembagian dan modulo untuk memanggil teks dari array, lalu merangkainya menjadi kalimat yang utuh. Jika input di luar rentang 0-100, program akan menampilkan pesan tidak valid.
 
 ### 3. Buatlah program yang dapat memberikan input dan output sbb.
+
+![Screenshot soal 3](https://lh3.googleusercontent.com/keep-bbsk/AFgXFlIwA_qlenwgXhccNTDCu49FAInS-IfcWeXe4QoHd5eX8eMc_ccUp7sxKaY9u2slS-Cu87AC3IdzW8enIy7E0JDvw3xcAmcqZ8PEXnBV3G2G43Wf3P8L=s512)
 
 ```C++
 #include <iostream>
@@ -140,11 +145,11 @@ int main() {
 ### Output Unguided 3 :
 
 ##### Output 1
-![Screenshot Output Unguided 3_1](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-1_Modul-1/output-unguided-3.1.png?raw=true)
+![Screenshot Output Unguided 3_1](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-1_Modul-1/Output/output-unguided-3.1.png?raw=true)
 
 
 ##### Output 2
-![Screenshot Output Unguided 3_2](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-1_Modul-1/output-unguided-3.2.png?raw=true)
+![Screenshot Output Unguided 3_2](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-1_Modul-1/Output/output-unguided-3.2.png?raw=true)
 
 Program di atas berfungsi untuk mencetak pola angka cermin (mirror) terbalik dengan bintang di tengah berdasarkan input jumlah baris. Program ini bekerja menggunakan struktur perulangan bersarang (nested for). Pada setiap barisnya, program mengeksekusi perintah secara berurutan: mencetak spasi agar pola terdorong ke tengah, mencetak angka menurun di sisi kiri, menyisipkan karakter bintang (*), lalu mencetak angka menaik di sisi kanan. Khusus pada baris terakhir, program hanya mencetak satu buah bintang sebagai penutup ujung bawah pola tersebut
 
