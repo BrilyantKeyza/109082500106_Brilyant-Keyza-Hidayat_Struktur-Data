@@ -48,9 +48,7 @@ int main() {
 
 Program di atas merupakan program yang berfungsi untuk melakukan operasi hitung matematika dasar hanya dengan menginputkan dua buah angka bilangan real. Setelah itu program akan memproses kedua nilai tersebut dengan penjumlahan, pengurangan, perkalian, dan pembagian bilangan pertama dengan bilangan kedua. Setelah proses perhitungan dilakukan, maka program akan mencetak hasil akhir dari masing-masing operasi penjumlahan, pengurangan, perkalian, dan pembagian tersebut ke layar.
 
-### 2. Buatlah sebuah program yang menerima masukan angka dan mengeluarkan output nilai angka tersebut dalam bentuk tulisan. Angka yang akan di- input-kan user adalah bilangan bulat positif mulai dari 0 s.d 100
-
-![Screenshot Menu Utama](https://lh3.googleusercontent.com/keep-bbsk/AFgXFlJjQYZa8eOa-hLZUBGYYFxpIIUPwefxdu2NJsaMq9EcBnsxDd-gA-bDPN-LFEvLaAGNkV98OddtB21gsDvmeggyfa1oaMSFuBTyVuk_KKsJCTpBZc8g=s512)
+### 2. Buatlah sebuah program yang menerima masukan angka dan mengeluarkan output nilai angka tersebut dalam bentuk tulisan. Angka yang akan di- input-kan user adalah bilangan bulat positif mulai dari 0 s.d 100.
 
 
 ```C++
@@ -108,8 +106,6 @@ int main() {
 Program di atas berfungsi untuk mengonversi input angka (0-100) menjadi teks tulisan. Program ini bekerja memadukan kondisi if-else, array penyimpan teks, serta operator pembagian (/) dan modulo (%). Angka khusus seperti 0, 10, 11, dan 100 akan dicetak teksnya secara langsung. Sementara untuk angka belasan dan puluhan, program memecah digit angkanya menggunakan operator pembagian dan modulo untuk memanggil teks dari array, lalu merangkainya menjadi kalimat yang utuh. Jika input di luar rentang 0-100, program akan menampilkan pesan tidak valid.
 
 ### 3. Buatlah program yang dapat memberikan input dan output sbb.
-
-![Screenshot soal 3](https://lh3.googleusercontent.com/keep-bbsk/AFgXFlIwA_qlenwgXhccNTDCu49FAInS-IfcWeXe4QoHd5eX8eMc_ccUp7sxKaY9u2slS-Cu87AC3IdzW8enIy7E0JDvw3xcAmcqZ8PEXnBV3G2G43Wf3P8L=s512)
 
 ```C++
 #include <iostream>
