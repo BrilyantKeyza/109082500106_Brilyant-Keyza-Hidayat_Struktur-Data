@@ -155,4 +155,4 @@ Kesimpulannya pada praktikum Modul 1 yaitu dasar pemrograman C++ itu sangat pent
 ## Referensi
 [1] Supriyanto, A., & Purnomo, D. (2023). "Analisis Fundamental Bahasa Pemrograman C++ dalam Optimalisasi Struktur Data dan Algoritma". Jurnal Ilmu Komputer dan Informatika (JIKI), 12(2), 45-52.
 <br>[2] Modul 1: Code Blocks IDE & Pengenalan Bahasa C++ (Bagian Pertama). Modul Praktikum Struktur Data. (Referensi Modul).
-<br>...
+<br>
