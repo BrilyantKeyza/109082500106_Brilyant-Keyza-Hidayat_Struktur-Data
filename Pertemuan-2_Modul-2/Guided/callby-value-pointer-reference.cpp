@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-void tukarValue(int x, int y) {
+void tukar(int x, int y) {
     int temp;
 
     temp = x;
@@ -18,15 +18,17 @@ int main() {
     cout << "a = " << a << endl;
     cout << "b = " << b << endl;
 
-    tukarValue(a, b);
+    tukar(a, b);
 
     cout << "\nSetelah ditukar: " << endl;
     cout << "a = " << a << endl;
     cout << "b = " << b << endl;
 }
 
-// Call By Pointer
-// void tukarPointer(int *x, int *y) {
+//Call By Pointer
+// #include <iostream>
+// using namespace std;
+// void tukar(int *x, int *y) {
 //     int temp;
 
 //     temp = *x;
@@ -42,15 +44,18 @@ int main() {
 //     cout << "a = " << a << endl;
 //     cout << "b = " << b << endl;
 
-//     tukarPointer(&a, &b);
+//     tukar(&a, &b);
 
 //     cout << "\nSetelah ditukar: " << endl;
 //     cout << "a = " << a << endl;
 //     cout << "b = " << b << endl;
 // }
 
-// Call By Reference
-// void tukarReference(int &x, int &y) {
+//Call By Reference
+// #include <iostream>
+// using namespace std;
+
+// void tukar(int &x, int &y) {
 //     int temp;
 
 //     temp = x;
@@ -66,7 +71,7 @@ int main() {
 //     cout << "a = " << a << endl;
 //     cout << "b = " << b << endl;
 
-//     tukarReference(a, b);
+//     tukar(a, b);
 
 //     cout << "\nSetelah ditukar: " << endl;
 //     cout << "a = " << a << endl;

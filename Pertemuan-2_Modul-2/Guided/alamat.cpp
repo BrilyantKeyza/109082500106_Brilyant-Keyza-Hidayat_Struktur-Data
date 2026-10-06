@@ -1,4 +1,4 @@
-// Pointer 1 alamat
+// Alamat
 #include <iostream>
 using namespace std;
 int main() {

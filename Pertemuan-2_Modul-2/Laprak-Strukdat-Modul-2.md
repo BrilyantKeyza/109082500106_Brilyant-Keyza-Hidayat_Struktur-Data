@@ -101,7 +101,7 @@ Program ini merupakan implementasi array 3 dimensi  yang berfungsi untuk menyimp
 ### 4. Alamat/Address
 
 ```C++
-// Pointer 1 alamat
+// Alamat
 #include <iostream>
 using namespace std;
 int main() {
@@ -115,10 +115,35 @@ int main() {
 ```
 Program ini adalah dasar pengenalan alamat memori, cara kerjanya adalah dengan mendeklarasikan variabel angka bernilai 100, lalu mencetak nilai tersebut sekaligus menampilkan alamat memori aslinya dengan menggunakan operator address-of `&` di depan nama variabelnya.
 
-### 5. Pointer
+### 5. Pointer Array
 
 ```C++
-// Pointer 2
+// Pointer Array 1
+#include <iostream>
+using namespace std;
+
+int main() {
+    char arr[6];
+
+    arr[0] = 'a';
+    arr[1] = 'b';
+    arr[2] = 'c';
+    arr[3] = 'd';
+    arr[4] = 'e';
+    arr[5] = 'f';
+
+    cout << arr[3] << endl; //value
+    cout << &(arr[4]) << endl; // address
+
+    return 0;
+}
+```
+Program ini merupakan hubungan antara array dan alamat memori yang berfungsi untuk melihat isi data sekaligus letak penyimpanannya di dalam sistem komputer. Dengan mendeklarasikan sebuah array berisikan karakter, mengisi masing-masing elemennya, lalu mencetak nilai dari indeks ke-3 dan alamat memori dari indeks ke-4 menggunakan operator `&`.
+
+### 6. Pointer
+
+```C++
+// Pointer 1
 #include <iostream>
 using namespace std;
 int main() {
@@ -136,9 +161,9 @@ int main() {
     return 0;
 }
 ```
-penjelasan singkat guided 5
+Program ini adalah program penerapan variabel pointer yang berfungsi untuk menunjuk dan menyimpan alamat memori dari variabel lain. Dengan cara menyimpan alamat `variabel` angka ke dalam variabel `pointer`, lalu mencetak nilai asli dan alamat memorinya secara bersamaan untuk menunjukkan keterhubungan langsung antara sebuah data dengan pointernya.
 
-### 6. Function
+### 7. Function
 
 ```C++
 // Function
@@ -175,7 +200,7 @@ int main() {
 ```
 Program ini menggunakan function yang bertujuan untuk mencari dan mengembalikan nilai terbesar dari tiga buah bilangan yang diinputkan. Cara kerjanya adalah dengan meminta pengguna memasukkan tiga angka, lalu meneruskannya sebagai parameter ke dalam fungsi `maks3` untuk saling dibandingkan, dan hasil nilai tertingginya akan dikembalikan ke program utama untuk dicetak.
 
-### 7. Prosedure
+### 8. Prosedure
 
 ```C++
 // Procedure
@@ -193,14 +218,14 @@ int main() {
 ```
 Program ini merupakan program penggunaan prosedure yang bertugas menjalankan suatu perintah tanpa mengembalikan nilai balikan apapun. Cara kerjanya adalah dengan mendefinisikan sebuah prosedur bernama sapa yang berisi perintah untuk mencetak teks sapaan, lalu program utama mengeksekusinya dengan memanggil nama prosedur tersebut.
 
-### 8. Call By Value, Pointer, Reference
+### 9. Call By Value, Pointer, Reference
 
 ```C++
 // Call By Value
 #include <iostream>
 using namespace std;
 
-void tukarValue(int x, int y) {
+void tukar(int x, int y) {
     int temp;
 
     temp = x;
@@ -216,28 +241,144 @@ int main() {
     cout << "a = " << a << endl;
     cout << "b = " << b << endl;
 
-    tukarValue(a, b);
+    tukar(a, b);
+
+    cout << "\nSetelah ditukar: " << endl;
+    cout << "a = " << a << endl;
+    cout << "b = " << b << endl;
+}
+
+//Call By Pointer
+#include <iostream>
+using namespace std;
+
+void tukar(int *x, int *y) {
+    int temp;
+
+    temp = *x;
+    *x = *y;
+    *y = temp;
+}
+
+int main() {
+    int a = 4;
+    int b = 6;
+
+    cout << "Sebelum ditukar: " << endl;
+    cout << "a = " << a << endl;
+    cout << "b = " << b << endl;
+
+    tukar(&a, &b);
+
+    cout << "\nSetelah ditukar: " << endl;
+    cout << "a = " << a << endl;
+    cout << "b = " << b << endl;
+}
+
+//Call By Reference
+#include <iostream>
+using namespace std;
+
+void tukar(int &x, int &y) {
+    int temp;
+
+    temp = x;
+    x = y;
+    y = temp;
+}
+
+int main() {
+    int a = 4;
+    int b = 6;
+
+    cout << "Sebelum ditukar: " << endl;
+    cout << "a = " << a << endl;
+    cout << "b = " << b << endl;
+
+    tukar(a, b);
 
     cout << "\nSetelah ditukar: " << endl;
     cout << "a = " << a << endl;
     cout << "b = " << b << endl;
 }
 ```
-penjelasan singkat guided 3
+Program Call By Value adalah contoh metode pemanggilan fungsi yang melewatkan parameter hanya dengan menyalin nilainya saja. Cara kerjanya, prosedur `tukar` memanipulasi data salinan tersebut, sehingga angka asli pada variabel `a` dan `b` di program utama tidak akan ikut berubah atau tertukar.
 
-### 9. Array 3 Dimensi
+Program Call By Pointer merupakan contoh pemanggilan fungsi yang mengirimkan parameter berupa alamat memori menggunakan pointer. Dengan cara menerima alamat asli memori dari variabel `a` dan `b`, prosedur `tukar` dapat mengakses dan berhasil menukar nilai asli dari kedua variabel tersebut secara langsung di dalam program utama.
 
-```C++
-source code guided 9
-```
-penjelasan singkat guided 3
+Program Call By Reference adalah penerapan pemanggilan fungsi yang memanipulasi variabel asli secara langsung melalui sebuah alias referensi menggunakan simbol `&`. Cara kerjanya sama seperti pointer yang berhasil menukar angka asli `a` dan `b`, namun dengan penulisan sintaks pemanggilan yang lebih ringkas tanpa perlu mengirimkan lambang alamat memori secara eksplisit.
+
 
 ## Unguided 
 
-### 1. (isi dengan soal unguided 1)
+### 1. Buatlah program yang dapat melakukan operasi penjumlahan, pengurangan, dan perkalian matriks 3x3. 
 
 ```C++
-source code unguided 1
+#include <iostream>
+using namespace std;
+
+int main() {
+    // Mendeklarasikan variable
+    int matriksA[3][3], matriksB[3][3];
+    int tambah[3][3], kurang[3][3], kali[3][3];
+
+    
+    cout << "Input Matriks A (3x3)";
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << "Elemen A[" << i << "][" << j << "]: ";
+            cin >> matriksA[i][j];
+        }
+    }
+
+    cout << "\nInput Matriks B (3x3)";
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << "Elemen B[" << i << "][" << j << "]: ";
+            cin >> matriksB[i][j];
+        }
+    }
+
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+           
+            tambah[i][j] = matriksA[i][j] + matriksB[i][j];
+            kurang[i][j] = matriksA[i][j] - matriksB[i][j];
+            
+            kali[i][j] = 0; 
+            for (int k = 0; k < 3; k++) {
+                kali[i][j] += matriksA[i][k] * matriksB[k][j];
+            }
+        }
+    }
+
+    cout << "\nHasil Penjumlahan\n";
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << tambah[i][j] << "\t";
+        }
+        cout << endl;
+    }
+
+    cout << "\nHasil Pengurangan\n";
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << kurang[i][j] << "\t";
+        }
+        cout << endl;
+    }
+
+    cout << "\nHasil Perkalian\n";
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << kali[i][j] << "\t";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
 ```
 ### Output Unguided 1 :
 
@@ -250,10 +391,55 @@ source code unguided 1
 
 penjelasan unguided 1 
 
-### 2. (isi dengan soal unguided 2)
+### 2. Berdasarkan guided pointer dan reference sebelumnya, buatlah keduanya dapat menukar nilai dari 3 variabel.
 
 ```C++
-source code unguided 2
+#include <iostream>
+using namespace std;
+
+void tukarPointer(int *x, int *y, int *z) {
+    int temp;
+
+    temp = *x;
+    *x = *y;
+    *y = *z;
+    *z = temp;
+}
+
+void tukarReference(int &x, int &y, int &z) {
+    int temp;
+
+    temp = x;
+    x = y;
+    y = z;
+    z = temp;
+}
+
+int main() {
+    int a = 4;
+    int b = 6;
+    int c = 8;
+
+    cout << "Sebelum ditukar: " << endl;
+    cout << "a = " << a << endl;
+    cout << "b = " << b << endl;
+    cout << "c = " << c << endl;
+
+    tukarPointer(&a, &b, &c);
+
+    cout << "\nSetelah ditukar Pointer: " << endl;
+    cout << "a = " << a << endl;
+    cout << "b = " << b << endl;
+    cout << "c = " << c << endl;
+
+    tukarReference(a, b, c);
+
+    cout << "\nSetelah ditukar Reference: " << endl;
+    cout << "a = " << a << endl;
+    cout << "b = " << b << endl;
+    cout << "c = " << c << endl;
+}
+
 ```
 ### Output Unguided 2 :
 
@@ -266,10 +452,90 @@ source code unguided 2
 
 penjelasan unguided 2
 
-### 3. (isi dengan soal unguided 3)
+### 3. Diketahui sebuah array 1 dimensi sebagai berikut : arrA = {11, 8, 5, 7, 12, 26, 3, 54, 33, 55} Buatlah program yang dapat mencari nilai minimum, maksimum, dan rata – rata dari array tersebut! Gunakan function cariMinimum() untuk mencari nilai minimum dan function cariMaksimum() untuk mencari nilai maksimum, serta gunakan prosedur hitungRataRata() untuk menghitung nilai rata – rata! Buat program menggunakan menu switch-case seperti berikut ini : 
+### --- Menu Program Array ---  
+#### • Tampilkan isi array  
+#### • cari nilai maksimum 
+#### • cari nilai minimum  
+#### • Hitung nilai rata - rata 
+ 
 
 ```C++
-source code unguided 3
+#include <iostream>
+using namespace std;
+
+// Fungsi untuk mencari nilai maksimum
+int cariMaksimum(int arr[], int ukuranArray) {
+    int max = arr[0];
+    for (int i = 1; i < ukuranArray; i++) {
+        if (arr[i] > max) {
+            max = arr[i]; 
+        }
+    }
+    return max;
+}
+
+int cariMinimum(int arr[], int ukuranArray) {
+    int min = arr[0];
+    for (int i = 1; i < ukuranArray; i++) {
+        if (arr[i] < min) {
+            min = arr[i];
+        }
+    }
+    return min;
+}
+
+void hitungRataRata(int arr[], int ukuranArray) {
+    float total = 0;
+    for (int i = 0; i < ukuranArray; i++) {
+        total += arr[i];
+    }
+    float rataRata = total / ukuranArray;
+    cout << "Nilai rata-rata array adalah: " << rataRata << endl;
+}
+
+int main() {
+    int arrA[10] = {11, 8, 5, 7, 12, 26, 3, 54, 33, 55};
+    int ukuranArray = 10;
+    int pilihan;
+
+    do {
+        cout << "\n==== Menu Program Array ====" << endl;
+        cout << "1. Tampilkan isi array" << endl;
+        cout << "2. Cari nilai maksimum" << endl;
+        cout << "3. Cari nilai minimum" << endl;
+        cout << "4. Hitung nilai rata-rata" << endl;
+        cout << "5. Keluar program" << endl;
+        cout << "Masukkan pilihan (1-5): ";
+        cin >> pilihan;
+
+        switch (pilihan) {
+            case 1:
+                cout << "Isi array arrA: ";
+                for (int i = 0; i < ukuranArray; i++) {
+                    cout << arrA[i] << " ";
+                }
+                cout << endl;
+                break;
+            case 2:
+                cout << "Nilai maksimum array adalah: " << cariMaksimum(arrA, ukuranArray) << endl;
+                break;
+            case 3:
+                cout << "Nilai minimum array adalah: " << cariMinimum(arrA, ukuranArray) << endl;
+                break;
+            case 4:
+                hitungRataRata(arrA, ukuranArray);
+                break;
+            case 5:
+                cout << "Keluar dari program. Terima kasih!" << endl;
+                break;
+            default:
+                cout << "Pilihan tidak valid. Silakan coba lagi." << endl;
+        }
+    } while (pilihan != 5); 
+
+    return 0;
+}
 ```
 ### Output Unguided 3 :
 
