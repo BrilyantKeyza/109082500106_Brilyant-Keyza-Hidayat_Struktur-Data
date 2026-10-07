@@ -64,7 +64,7 @@ int main() {
                 hitungRataRata(arrA, ukuranArray);
                 break;
             case 5:
-                cout << "Keluar dari program. Terima kasih!" << endl;
+                cout << "Keluar dari program." << endl;
                 break;
             default:
                 cout << "Pilihan tidak valid. Silakan coba lagi." << endl;

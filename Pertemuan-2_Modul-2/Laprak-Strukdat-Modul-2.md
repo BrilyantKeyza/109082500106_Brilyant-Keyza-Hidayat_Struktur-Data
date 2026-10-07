@@ -2,22 +2,20 @@
 <p align="center">Muhammad Dhimas Hafizh Fathurrahman - 2311102151</p>
 
 ## Dasar Teori
-isi dengan penjelasan dasar teori disertai referensi jurnal (gunakan kurung siku [] untuk pernyataan yang mengambil refernsi dari jurnal).
-contoh :
-Linked list atau yang disebut juga senarai berantai adalah Salah satu bentuk struktur data yang berisi kumpulan data yang tersusun secara sekuensial, saling bersambungan, dinamis, dan terbatas[1]. Linked list terdiri dari sejumlah node atau simpul yang dihubungkan secara linier dengan bantuan pointer.
 
-### A. ...<br/>
-...
-#### 1. ...
-#### 2. ...
-#### 3. ...
 
-### B. ...<br/>
-...
-#### 1. ...
-#### 2. ...
-#### 3. ...
+### A. Array<br/>
+Array merupakan kumpulan data yang memiliki nama yang sama dengan setiap elemen bertipe data serupa. Untuk mengakses setiap komponen di dalamnya, program menggunakan sebuah indeks yang selalu dimulai dari angka nol, di mana data array ini tersimpan dalam memori pada lokasi yang saling berurutan. Secara struktur, array terbagi menjadi array satu dimensi yang hanya memiliki satu larik data, array dua dimensi yang bentuknya mirip seperti tabel untuk penyimpanan data baris dan kolom, serta array berdimensi banyak yang mempunyai indeks lebih dari dua.
 
+### B. Memori dan Pointer<br/>
+Seluruh data program komputer pada dasarnya disimpan di dalam memori yang dialokasikan oleh sistem operasi, di mana setiap sel memori tersebut memiliki identitas alamat yang unik. Untuk mengetahui alamat memori dari suatu variabel, digunakan simbol `&` di depan nama variabelnya. Alamat memori ini kemudian dapat disimpan oleh pointer, yaitu sebuah tipe variabel yang berisi nilai integer dalam format heksadesimal. Jika ingin mendapatkan nilai dari variabel yang sedang ditunjuk oleh suatu pointer, maka digunakan tanda `*` di depan nama variabel pointer tersebut. Pointer ini juga memiliki keterhubungan yang sangat erat dengan array dan string, di mana pointer dapat digunakan untuk menunjuk elemen awal dari sebuah array maupun string, serta bergeser menunjuk elemen-elemen memori berikutnya secara berurutan.
+
+### C.Fungsi dan Prosedur<br/>
+Fungsi merupakan sebuah blok kode yang dirancang secara khusus untuk melaksanakan tugas tertentu, sehingga program menjadi lebih terstruktur dan terhindar dari duplikasi kode. Pada umumnya, fungsi akan menerima masukan berupa parameter dan menghasilkan sebuah nilai balik pada akhir prosesnya. Sementara itu, terdapat pula konsep prosedur dalam bahasa pemrograman C++ yang merujuk pada fungsi yang sama sekali tidak mengembalikan nilai balik, atau biasa dikenal juga sebagai fungsi bertipe void.
+
+
+### D. Parameter Fungsi<br/>
+Dalam penggunaan fungsi, dikenal istilah parameter formal yang ada pada saat pendefinisian fungsi dan parameter aktual yang dipakai ketika fungsi dipanggil. Terdapat tiga cara untuk melewatkan parameter tersebut ke dalam fungsi, yang pertama adalah pemanggilan dengan nilai (call by value) di mana nilai hanya disalin sehingga variabel aktual tidak akan ikut berubah. Cara kedua adalah pemanggilan dengan pointer yang secara spesifik melewatkan alamat memori suatu variabel agar fungsi tersebut dapat langsung mengubah nilai dari variabel aktual yang ada di luar fungsi. Cara ketiga adalah pemanggilan dengan referensi (call by reference), yang cara kerjanya sama dengan pointer yaitu dapat memanipulasi variabel aktual, namun argumen dapat dilewatkan layaknya pemanggilan nilai biasa karena menggunakan deklarasi referensi `&` di parameter awalnya.
 ## Guided 
 
 ### 1. Array 1
@@ -118,7 +116,7 @@ Program ini adalah dasar pengenalan alamat memori, cara kerjanya adalah dengan m
 ### 5. Pointer Array
 
 ```C++
-// Pointer Array 1
+// Pointer Array
 #include <iostream>
 using namespace std;
 
@@ -323,18 +321,18 @@ int main() {
     int tambah[3][3], kurang[3][3], kali[3][3];
 
     
-    cout << "Input Matriks A (3x3)";
+    cout << "Input Matriks 1 (3x3)\n";
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            cout << "Elemen A[" << i << "][" << j << "]: ";
+            cout << "Matrix 1 baris ke-" << i << " kolom ke-" << j << ": ";
             cin >> matriksA[i][j];
         }
     }
 
-    cout << "\nInput Matriks B (3x3)";
+    cout << "\nInput Matriks 2 (3x3)\n";
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            cout << "Elemen B[" << i << "][" << j << "]: ";
+            cout << "Matrix 2 baris ke-" << i << " kolom ke-" << j << ": ";
             cin >> matriksB[i][j];
         }
     }
@@ -356,7 +354,7 @@ int main() {
     cout << "\nHasil Penjumlahan\n";
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            cout << tambah[i][j] << "\t";
+            cout << tambah[i][j] << " ";
         }
         cout << endl;
     }
@@ -364,7 +362,7 @@ int main() {
     cout << "\nHasil Pengurangan\n";
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            cout << kurang[i][j] << "\t";
+            cout << kurang[i][j] << " ";
         }
         cout << endl;
     }
@@ -372,13 +370,13 @@ int main() {
     cout << "\nHasil Perkalian\n";
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            cout << kali[i][j] << "\t";
+            cout << kali[i][j] << " ";
         }
         cout << endl;
     }
 
     return 0;
-}
+}   
 ```
 ### Output Unguided 1 :
 
@@ -388,9 +386,10 @@ int main() {
 
 
 ##### Output 2
-![Screenshot Output Unguided 1_2](https://github.com/(username github kalian)/(nama repository github kalian)/blob/main/(path folder menyimpan screenshot output)/(nama file screenshot output).png)
+![Screenshot Output Unguided 1_2](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-2_Modul-2/Output/output-unguided-1.3.png?raw=true)
+![Screenshot Output Unguided 1_2](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-2_Modul-2/Output/output-unguided-1.4.png?raw=true)
 
-penjelasan unguided 1 
+Program di atas merupakan program yang berfungsi untuk melakukan operasi perhitungan matriks berukuran 3x3 dengan cara pengguna menginputkan nilai elemen-elemen untuk dua buah matriks (Matriks 1 dan Matriks 2). Setelah angka-angkanya dinputkan, program akan memproses kedua matriks tersebut melalui operasi penjumlahan, pengurangan, dan perkalian menggunakan perulangan bersarang (nested loop) untuk menghitung baris dan kolomnya secara otomatis. Setelah itu program akan mencetak hasil akhir dari masing-masing matriks penjumlahan, pengurangan, dan perkalian.
 
 ### 2. Berdasarkan guided pointer dan reference sebelumnya, buatlah keduanya dapat menukar nilai dari 3 variabel.
 
@@ -440,14 +439,13 @@ int main() {
     cout << "b = " << b << endl;
     cout << "c = " << c << endl;
 }
-
 ```
 ### Output Unguided 2 :
 
 ##### Output 1
 ![Screenshot Output Unguided 2_1](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-2_Modul-2/Output/output-unguided-2.png?raw=true)
 
-penjelasan unguided 2
+Program di atas merupakan program yang berfungsi untuk menukar nilai dari tiga buah variabel dengan menerapkan dua metode sekaligus, yaitu pointer dan reference. Setelah itu, program akan memproses pergeseran nilai antar variabel tersebut (nilai a dipindah ke b, b ke c, dan c ke a) di dalam fungsi khusus dengan bantuan satu variabel penyimpanan sementara. Pada prosesnya, metode pointer menukar data dengan cara mengakses alamat memorinya, sedangkan metode referensi memanipulasi variabel aslinya secara langsung menggunakan sebuah alias. Setelah proses penukaran berhasil dilakukan secara bergantian oleh kedua fungsi tersebut, maka program akan mencetak hasil akhir berupa urutan angka yang sudah saling bertukar posisi.
 
 ### 3. Diketahui sebuah array 1 dimensi sebagai berikut : arrA = {11, 8, 5, 7, 12, 26, 3, 54, 33, 55} Buatlah program yang dapat mencari nilai minimum, maksimum, dan rata – rata dari array tersebut! Gunakan function cariMinimum() untuk mencari nilai minimum dan function cariMaksimum() untuk mencari nilai maksimum, serta gunakan prosedur hitungRataRata() untuk menghitung nilai rata – rata! Buat program menggunakan menu switch-case seperti berikut ini : 
 ### --- Menu Program Array ---  
@@ -524,7 +522,7 @@ int main() {
                 hitungRataRata(arrA, ukuranArray);
                 break;
             case 5:
-                cout << "Keluar dari program. Terima kasih!" << endl;
+                cout << "Keluar dari program." << endl;
                 break;
             default:
                 cout << "Pilihan tidak valid. Silakan coba lagi." << endl;
@@ -537,18 +535,14 @@ int main() {
 ### Output Unguided 3 :
 
 ##### Output 1
-![Screenshot Output Unguided 3_1](https://github.com/(username github kalian)/(nama repository github kalian)/blob/main/(path folder menyimpan screenshot output)/(nama file screenshot output).png)
+![Screenshot Output Unguided 3_1](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-2_Modul-2/Output/output-unguided-3.1.png?raw=true)
+![Screenshot Output Unguided 3_1](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-2_Modul-2/Output/output-unguided-3.2.png?raw=true)
 
-
-##### Output 2
-![Screenshot Output Unguided 3_2](https://github.com/(username github kalian)/(nama repository github kalian)/blob/main/(path folder menyimpan screenshot output)/(nama file screenshot output).png)
-
-penjelasan unguided 3
+Program di atas merupakan program yang berfungsi untuk mengelola dan memproses sekumpulan angka di dalam array satu dimensi. Setelah program dijalankan, program akan menampilkan sebuah menu dan meminta pengguna untuk menginputkan angka pilihan. Berdasarkan nilai yang diinputkan, program akan memproses pilihan tersebut menggunakan switch-case untuk mengarahkan ke pilihan yang sesuai, seperti mencetak seluruh isi array, memanggil fungsi untuk mencari nilai terbesar, memanggil fungsi untuk mencari nilai terkecil, atau memanggil prosedur untuk menjumlahkan dan membagi angka untuk mendapatkan nilai rata-rata. Setelah proses berhasil, lalu program akan mencetak hasil akhirnya ke layar, dan menu akan terus ditampilkan kembali hingga pengguna memilih opsi untuk keluar dari program.
 
 ## Kesimpulan
-...
+Kesimpulannya pada praktikum Modul 2 yaitu konsep array, pointer, dan fungsi itu sangat penting karena memberikan pemahaman mendalam mengenai struktur penyimpanan data dan pengolahan memori yang efisien. Pemrograman C++ pada modul ini juga sangat bergantung pada penggunaan alokasi memori (array), penunjuk alamat (pointer dan reference), serta pembuatan sub-program seperti fungsi dan prosedur (void). Penggunaan fungsi dan pointer/reference sangat diperlukan untuk memecah blok kode dan memanipulasi nilai variabel asli secara langsung, seperti pada soal pencarian nilai maksimum, minimum, rata-rata array, serta penukaran nilai dari tiga variabel. Sementara itu, struktur array dua dimensi juga sangat efektif untuk memecahkan soal operasi hitung penjumlahan, pengurangan, dan perkalian matriks 3x3 secara presisi. Secara keseluruhan, perpaduan struktur data dan modularitas ini sangat berguna dan efektif untuk membangun program menjadi lebih mudah dan efisien.
 
 ## Referensi
-[1] Triase. (2020). Diktat Edisi Revisi : STRUKTUR DATA. Medan: UNIVERSTAS ISLAM NEGERI SUMATERA UTARA MEDAN. 
-<br>[2] Indahyati, Uce., Rahmawati Yunianita. (2020). "BUKU AJAR ALGORITMA DAN PEMROGRAMAN DALAM BAHASA C++". Sidoarjo: Umsida Press. Diakses pada 10 Maret 2024 melalui https://doi.org/10.21070/2020/978-623-6833-67-4.
-<br>...
+[1] Modul 2: Pengenalan Bahasa C++ (Bagian Kedua). Modul Praktikum Struktur Data. (Referensi Modul).
+
