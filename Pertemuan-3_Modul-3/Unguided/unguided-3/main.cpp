@@ -4,8 +4,8 @@ using namespace std;
 
 int main() {
 
-    int arrayA[3][3] = { {1, 1, 1}, {1, 1, 1}, {1, 1, 1} };
-    int arrayB[3][3] = { {9, 9, 9}, {9, 9, 9}, {9, 9, 9} };
+    int arrayA[3][3] = { {1, 2, 3}, {3, 2, 1}, {1, 2, 3} };
+    int arrayB[3][3] = { {6, 3, 9}, {9, 3, 6}, {6, 3, 9} };
     
     int nilaiX = 10;
     int nilaiY = 99;
@@ -18,7 +18,6 @@ int main() {
     cout << "Array B:" << endl;
     tampilArray(arrayB);
 
-    // Menukar elemen pada indeks ke [1][1]
     tukarIsiArray(arrayA, arrayB, 1, 1);
 
     cout << "\n==== Setelah index [1][1] ditukar ====" << endl;
@@ -31,7 +30,6 @@ int main() {
     cout << "Nilai Pointer 1: " << *p1 << endl;
     cout << "Nilai Pointer 2: " << *p2 << endl;
 
-    // Menukar nilai dari pointer
     tukarPointer(p1, p2);
 
     cout << "\n==== Pointer setelah ditukar ====" << endl;

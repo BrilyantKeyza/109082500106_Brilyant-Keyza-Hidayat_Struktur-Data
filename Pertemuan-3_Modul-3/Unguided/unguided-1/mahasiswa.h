@@ -12,4 +12,6 @@ struct mahasiswa
 
 void inputMhs (mahasiswa &m);
 float nilaiAkhir (mahasiswa m);
+void tampilMhs (mahasiswa m); // Tambahan: prosedur untuk menampilkan data
+
 #endif //MAHASISWA_H_INCLUDED

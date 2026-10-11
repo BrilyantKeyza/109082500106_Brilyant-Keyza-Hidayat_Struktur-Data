@@ -6,7 +6,7 @@ int main() {
     int jumlahMhs;
     mahasiswa mhs[10];
 
-    cout << "Jumlah mahasiswa: ";
+    cout << "Jumlah mahasiswa (max 10): ";
     cin >> jumlahMhs;
 
     if (jumlahMhs > 10) {
@@ -20,9 +20,11 @@ int main() {
         mhs[i].nilaiAkhir = nilaiAkhir(mhs[i]);
     }
 
-
+    cout << "\n==== DATA MAHASISWA ====" << endl;
     for (int i = 0; i < jumlahMhs; i++) {
-        cout << "Nilai Akhir Mahasiswa" << i+1 << " = " << mhs[i].nilaiAkhir << endl;
+        cout << "Data Mahasiswa ke-" << i+1 << ":" << endl;
+        tampilMhs(mhs[i]);
     }
+    
     return 0;
 }
