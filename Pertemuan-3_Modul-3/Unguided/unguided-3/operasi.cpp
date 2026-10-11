@@ -1,6 +1,5 @@
 #include <iostream>
 #include "operasi.h"
-
 using namespace std;
 
 void tampilArray(int arr[3][3]) {
