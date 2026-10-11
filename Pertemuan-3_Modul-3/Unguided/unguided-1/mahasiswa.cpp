@@ -19,7 +19,6 @@ float nilaiAkhir(mahasiswa m) {
     return float(0.3 * m.uts) + (0.4 * m.uas) + (0.3 * m.tugas);
 }
 
-// Tambahan: Realisasi fungsi untuk menampilkan seluruh data
 void tampilMhs(mahasiswa m) {
     cout << "Nama: " << m.nama << endl;
     cout << "NIM: " << m.nim << endl;

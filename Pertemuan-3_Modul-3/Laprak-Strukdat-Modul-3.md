@@ -100,8 +100,9 @@ struct mahasiswa
 
 void inputMhs (mahasiswa &m);
 float nilaiAkhir (mahasiswa m);
-#endif //MAHASISWA_H_INCLUDED
+void tampilMhs (mahasiswa m);
 
+#endif //MAHASISWA_H_INCLUDED
 ```
 `2. mahasiswa.cpp`
 
@@ -111,20 +112,30 @@ float nilaiAkhir (mahasiswa m);
 using namespace std;
 
 void inputMhs(mahasiswa &m) {
-    cout << "Input nama = ";
+    cout << "Input Nama : ";
     cin >> m.nama;
-    cout << "Input nim = ";
+    cout << "Input NIM : ";
     cin >> m.nim;
-    cout << "Input nilai uts = ";
+    cout << "Input Nilai UTS : ";
     cin >> m.uts;
-    cout << "Input nilai uas = ";
+    cout << "Input Nilai UAS : ";
     cin >> m.uas;
-    cout << "Input nilai tugas = ";
+    cout << "Input Nilai Tugas : ";
     cin >> m.tugas;
 }
 
 float nilaiAkhir(mahasiswa m) {
     return float(0.3 * m.uts) + (0.4 * m.uas) + (0.3 * m.tugas);
+}
+
+void tampilMhs(mahasiswa m) {
+    cout << "Nama: " << m.nama << endl;
+    cout << "NIM: " << m.nim << endl;
+    cout << "Nilai UTS: " << m.uts << endl;
+    cout << "Nilai UAS: " << m.uas << endl;
+    cout << "Nilai Tugas: " << m.tugas << endl;
+    cout << "Nilai Akhir: " << m.nilaiAkhir << endl;
+    cout << "-----------------------------------" << endl;
 }
 ```
 `3. main.cpp`
@@ -137,7 +148,7 @@ int main() {
     int jumlahMhs;
     mahasiswa mhs[10];
 
-    cout << "Jumlah mahasiswa: ";
+    cout << "Jumlah mahasiswa (max 10): ";
     cin >> jumlahMhs;
 
     if (jumlahMhs > 10) {
@@ -151,20 +162,24 @@ int main() {
         mhs[i].nilaiAkhir = nilaiAkhir(mhs[i]);
     }
 
-
+    cout << "\n==== DATA MAHASISWA ====" << endl;
     for (int i = 0; i < jumlahMhs; i++) {
-        cout << "Nilai Akhir Mahasiswa" << i+1 << " = " << mhs[i].nilaiAkhir << endl;
+        cout << "Data Mahasiswa ke-" << i+1 << ":" << endl;
+        tampilMhs(mhs[i]);
     }
+    
     return 0;
 }
 ```
 ### Output Unguided 1 :
 
 ##### Output 1
-![Screenshot Output Unguided 1_1](https://github.com/(username github kalian)/(nama repository github kalian)/blob/main/(path folder menyimpan screenshot output)/(nama file screenshot output).png)
+![Screenshot Output Unguided 1_1](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-3_Modul-3/Output/output-unguided-1.1.png?raw=true)
+![Screenshot Output Unguided 1_1](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-3_Modul-3/Output/output-unguided-1.2.png?raw=true)
+
 
 ##### Output 2
-![Screenshot Output Unguided 1_2](https://github.com/(username github kalian)/(nama repository github kalian)/blob/main/(path folder menyimpan screenshot output)/(nama file screenshot output).png)
+![Screenshot Output Unguided 1_2](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-3_Modul-3/Output/output-unguided-1.3.png?raw=true)
 
 Program ini menggunakan struktur array satu dimensi bertipe struct yang berfungsi untuk menyimpan dan memproses sekumpulan data mahasiswa secara modular.  Struktur kodenya dipisahkan menjadi file `mahasiswa.h`, `mahasiswa.cpp` dan `main.cpp`
 
@@ -254,11 +269,8 @@ int main() {
 ### Output Unguided 2 :
 
 ##### Output 1
-![Screenshot Output Unguided 2_1](https://github.com/(username github kalian)/(nama repository github kalian)/blob/main/(path folder menyimpan screenshot output)/(nama file screenshot output).png)
+![Screenshot Output Unguided 2_1](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-3_Modul-3/Output/output-unguided-2.1.png?raw=true)
 
-
-##### Output 2
-![Screenshot Output Unguided 2_2](https://github.com/(username github kalian)/(nama repository github kalian)/blob/main/(path folder menyimpan screenshot output)/(nama file screenshot output).png)
 
 Program ini merancang tipe data baru bernama pelajaran yang menyimpan informasi berupa nama dan kode mata pelajaran. Struktur kodenya dipisahkan menjadi file `pelajaran.h`, `pelajaran.cpp` dan `main.cpp` Cara kerjanya berfokus pada konsep fungsi konstruktor atau pembentuk tipe data. Pada program utama, data teks berupa "Struktur Data" dan "STD" dikirim menuju fungsi `create_pelajaran`. Fungsi tersebut kemudian bertugas merakit sebuah objek struct baru dengan memasukkan teks tersebut ke dalam atributnya masing-masing, lalu mengembalikan objek yang sudah berisi data utuh tersebut ke program utama. Terakhir, objek yang telah terbentuk ini dilempar ke dalam prosedur `tampil_pelajaran` agar isinya dapat dicetak.
 
@@ -293,14 +305,13 @@ using namespace std;
 void tampilArray(int arr[3][3]) {
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            cout << arr[i][j] << "\t";
+            cout << arr[i][j] << "  ";
         }
         cout << endl;
     }
 }
 
 void tukarIsiArray(int arr1[3][3], int arr2[3][3], int baris, int kolom) {
-    // Validasi indeks tidak melebihi batas array 3x3
     if (baris >= 0 && baris < 3 && kolom >= 0 && kolom < 3) {
         int temp = arr1[baris][kolom];
         arr1[baris][kolom] = arr2[baris][kolom];
@@ -325,8 +336,8 @@ using namespace std;
 
 int main() {
 
-    int arrayA[3][3] = { {1, 1, 1}, {1, 1, 1}, {1, 1, 1} };
-    int arrayB[3][3] = { {9, 9, 9}, {9, 9, 9}, {9, 9, 9} };
+    int arrayA[3][3] = { {1, 2, 3}, {3, 2, 1}, {1, 2, 3} };
+    int arrayB[3][3] = { {6, 3, 9}, {9, 3, 6}, {6, 3, 9} };
     
     int nilaiX = 10;
     int nilaiY = 99;
@@ -339,7 +350,6 @@ int main() {
     cout << "Array B:" << endl;
     tampilArray(arrayB);
 
-    // Menukar elemen pada indeks ke [1][1]
     tukarIsiArray(arrayA, arrayB, 1, 1);
 
     cout << "\n==== Setelah index [1][1] ditukar ====" << endl;
@@ -352,7 +362,6 @@ int main() {
     cout << "Nilai Pointer 1: " << *p1 << endl;
     cout << "Nilai Pointer 2: " << *p2 << endl;
 
-    // Menukar nilai dari pointer
     tukarPointer(p1, p2);
 
     cout << "\n==== Pointer setelah ditukar ====" << endl;
@@ -365,13 +374,10 @@ int main() {
 ### Output Unguided 3 :
 
 ##### Output 1
-![Screenshot Output Unguided 3_1](https://github.com/(username github kalian)/(nama repository github kalian)/blob/main/(path folder menyimpan screenshot output)/(nama file screenshot output).png)
-
-contoh :
-![Screenshot Output Unguided 3_1](https://github.com/DhimazHafizh/2311102151_Muhammad-Dhimas-Hafizh-Fathurrahman/blob/main/Pertemuan1_Modul1/Output-Unguided3-1.png)
+![Screenshot Output Unguided 3_1](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-3_Modul-3/Output/output-unguided-3.1.png?raw=true)
 
 ##### Output 2
-![Screenshot Output Unguided 3_2](https://github.com/(username github kalian)/(nama repository github kalian)/blob/main/(path folder menyimpan screenshot output)/(nama file screenshot output).png)
+![Screenshot Output Unguided 3_2](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-3_Modul-3/Output/output-unguided-3.2.png?raw=true)
 
 Program ini merupakan implementasi dari konsep modularitas kode yang berfokus pada teknik pengiriman parameter dan manipulasi memori menggunakan array dua dimensi berukuran 3x3 serta pointer. Struktur kodenya dipisahkan menjadi file `pelajaran.h`, `pelajaran.cpp` dan `main.cpp`.
 
@@ -382,4 +388,4 @@ Kesimpulannya pada praktikum Modul 3 yaitu pemahaman terkait Abstract Data Type 
 
 ## Referensi
 [1] Hidayat, T., & Muttaqin, M. (2020). "Penerapan Abstract Data Type (ADT) pada Struktur Data Berbasis Object Oriented Programming". Jurnal Informatika dan Rekayasa Perangkat Lunak.
-[2] Modul 3: Modul 3 ABSTRACT DATA TYPE (ADT). Modul Praktikum Struktur Data. (Referensi Modul).
+<br>[2] Modul 3: Modul 3 ABSTRACT DATA TYPE (ADT). Modul Praktikum Struktur Data. (Referensi Modul).
