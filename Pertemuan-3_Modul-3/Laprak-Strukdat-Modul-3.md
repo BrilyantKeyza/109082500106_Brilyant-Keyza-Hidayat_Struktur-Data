@@ -75,7 +75,7 @@ int main() {
     return 0;
 }
 ```
-penjelasan singkat guided 
+Program ini merupakan contoh penerapan dasar dari konsep Abstract Data Type (ADT) dalam bahasa C++ yang berfungsi untuk menyimpan dan mengolah data seorang mahasiswa secara terstruktur dan modular. Secara keseluruhan, program ini bekerja dengan memecah kode ke dalam tiga bagian terpisah yaitu pendefinisian kerangka tipe data (struct) dan fungsi di file `mahasiswa.h`, logika operasional pengisian data dan perhitungan rumus di file `mahasiswa.cpp`, serta pusat eksekusi di program utama—yang bertujuan untuk meminta pengguna memasukkan NIM beserta dua buah nilai, kemudian memprosesnya dan langsung mencetak hasil nilai rata-rata dari kedua nilai tersebut ke layar.
 
 ## Unguided 
 
