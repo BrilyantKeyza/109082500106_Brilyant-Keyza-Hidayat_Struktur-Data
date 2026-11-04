@@ -468,7 +468,7 @@ int main() {
 ### Output Unguided 1 :
 
 ##### Output 1
-![Screenshot Output Unguided 1_1](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-5_Modul-5/Output/output-1.png?raw=true)
+![Screenshot Output Unguided 1_1]()
 
 Program ini berfungsi untuk mencatat dan mengelola data kendaraan menggunakan struktur Doubly Linked List yang mengimplementasikan dua arah penunjuk elemen, yaitu pointer `next` dan `prev`, serta menggunakan penanda `First` dan `Last` pada list utama. Secara cara kerjanya, program akan mengalokasikan memori untuk data baru dan memvalidasi input agar tidak ada data nomor polisi yang duplikat. Terkait penerapan operasinya, program ini secara khusus mengeksekusi operasi `insertFirst` untuk menyisipkan data ke posisi paling awal dengan cara merangkai pointer `next` dan `prev` secara dinamis, meskipun deklarasi fungsi `insertLast` juga disiapkan di dalam strukturnya. Pada tahap akhir, program memanggil operasi penelusuran `printInfo` yang bergerak maju menggunakan pointer `next` untuk mencetak seluruh daftar kendaraan dari urutan input terbaru hingga yang terlama.
 
