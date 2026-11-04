@@ -292,7 +292,8 @@ int main() {
     return 0;
 }
 ```
-Pr
+Program guided ini berfungsi untuk mendemonstrasikan operasi lengkap pada struktur Doubly Linked List.
+Cara kerjanya, pertama program menyiapkan list kosong dengan penanda `first` dan `last`, lalu mengeksekusi serangkaian operasi penyisipan memori (`insertFirst`, `insertLast`, `insertAfter`, dan `insertBefore`) untuk merangkai elemen-elemen baru menggunakan pointer dua arah (`next` dan `prev`). Selanjutnya, program menguji fungsi pencarian (`findElm`) untuk memverifikasi lokasi data, sebelum mendemonstrasikan proses penghapusan elemen dari berbagai sisi list (`deleteAfter`, `deleteBefore`, `deleteFirst`, dan `deleteLast`) dan membersihkannya dari memori. Setiap kali suatu operasi selesai dieksekusi, program akan menampilkan (printInfo) struktur tabel list yang tersisa ke layar untuk menunjukkan histori perubahannya.
 ## Unguided 
 
 ### 1. Buatlah ADT Doubly Linked list sebagai berikut di dalam file “Doublylist.h”:
@@ -468,7 +469,7 @@ int main() {
 ### Output Unguided 1 :
 
 ##### Output 1
-![Screenshot Output Unguided 1_1]()
+![Screenshot Output Unguided 1_1](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-6_Modul-6/Output/output-1.png?raw=true)
 
 Program ini berfungsi untuk mencatat dan mengelola data kendaraan menggunakan struktur Doubly Linked List yang mengimplementasikan dua arah penunjuk elemen, yaitu pointer `next` dan `prev`, serta menggunakan penanda `First` dan `Last` pada list utama. Secara cara kerjanya, program akan mengalokasikan memori untuk data baru dan memvalidasi input agar tidak ada data nomor polisi yang duplikat. Terkait penerapan operasinya, program ini secara khusus mengeksekusi operasi `insertFirst` untuk menyisipkan data ke posisi paling awal dengan cara merangkai pointer `next` dan `prev` secara dinamis, meskipun deklarasi fungsi `insertLast` juga disiapkan di dalam strukturnya. Pada tahap akhir, program memanggil operasi penelusuran `printInfo` yang bergerak maju menggunakan pointer `next` untuk mencetak seluruh daftar kendaraan dari urutan input terbaru hingga yang terlama.
 
@@ -477,20 +478,182 @@ fungsi findElm( L : List, x : infotype ) : address
 
 #### Doublylist.h
 ```C++
+#ifndef DOUBLYLIST_H
+#define DOUBLYLIST_H
+#include <iostream>
+#include <string>
 
+#define Nil NULL
+using namespace std;
+
+struct kendaraan {
+    string nopol;
+    string warna;
+    int thnBuat;
+};
+
+typedef kendaraan infotype;
+typedef struct ElmList *address;
+
+struct ElmList {
+    infotype info;
+    address next;
+    address prev;
+};
+
+struct List {
+    address First;
+    address Last;
+};
+
+void CreateList(List &L);
+address alokasi(infotype x);
+void dealokasi(address &P);
+void printInfo(List L);
+void insertLast(List &L, address P);
+void insertFirst(List &L, address P); 
+bool cekDuplikat(List L, string nopol);
+// Tambahan fungsi untuk soal nomor 2
+address findElm(List L, infotype x);
+
+#endif
 ```
 #### Doublylist.cpp
 ```C++
+#include <iostream>
+#include "Doublylist.h"
+using namespace std;
 
+void CreateList(List &L) {
+    L.First = Nil;
+    L.Last = Nil;
+}
+
+address alokasi(infotype x) {
+    address P = new ElmList;
+    P->info = x;
+    P->next = Nil;
+    P->prev = Nil;
+    return P;
+}
+
+void dealokasi(address &P) {
+    delete P;
+    P = Nil;
+}
+
+void insertLast(List &L, address P) {
+    if (L.First == Nil) {
+        L.First = P;
+        L.Last = P;
+    } else {
+        P->prev = L.Last;
+        L.Last->next = P;
+        L.Last = P;
+    }
+}
+
+void insertFirst(List &L, address P) {
+    if (L.First == Nil) {
+        L.First = P;
+        L.Last = P;
+    } else {
+        P->next = L.First;
+        L.First->prev = P;
+        L.First = P;
+    }
+}
+
+void printInfo(List L) {
+    address P = L.First;
+    cout << "DATA LIST 1\n\n";
+    while (P != Nil) {
+        cout << "No Polisi : " << P->info.nopol << endl;
+        cout << "Warna     : " << P->info.warna << endl;
+        cout << "Tahun     : " << P->info.thnBuat << endl;
+        P = P->next;
+    }
+}
+
+bool cekDuplikat(List L, string nopol) {
+    address P = L.First;
+    while (P != Nil) {
+        if (P->info.nopol == nopol) {
+            return true;
+        }
+        P = P->next;
+    }
+    return false;
+}
+
+// Tambahan untuk soal no 2
+address findElm(List L, infotype x) {
+    address P = L.First;
+    while (P != Nil) {
+        if (P->info.nopol == x.nopol) {
+            return P;
+        }
+        P = P->next;
+    }
+    return Nil; 
+}
 ```
 #### main.cpp
 ```C++
+#include <iostream>
+#include "Doublylist.h"
+using namespace std;
 
+int main() {
+    List L;
+    CreateList(L);
+    
+    infotype data;
+    address P;
+
+    for (int i = 0; i < 4; i++) {
+        cout << "masukkan nomor polisi: ";
+        cin >> data.nopol;
+        cout << "masukkan warna kendaraan: ";
+        cin >> data.warna;
+        cout << "masukkan tahun kendaraan: ";
+        cin >> data.thnBuat;
+        
+        if (cekDuplikat(L, data.nopol)) {
+            cout << "nomor polisi sudah terdaftar\n\n";
+        } else {
+            P = alokasi(data);
+            insertFirst(L, P); 
+            cout << endl;
+        }
+    }
+    
+    printInfo(L);
+    
+    // Tambahan untuk soal no 2
+    cout << "\n";
+    infotype dataCari;
+    cout << "Masukkan Nomor Polisi yang dicari: ";
+    cin >> dataCari.nopol;
+    cout << "\n";
+    
+    address ketemu = findElm(L, dataCari);
+    
+    if (ketemu != Nil) {
+        cout << "Nomor Polisi \t: " << ketemu->info.nopol << endl;
+        cout << "Warna \t\t: " << ketemu->info.warna << endl;
+        cout << "Tahun \t\t: " << ketemu->info.thnBuat << endl;
+    } else {
+        cout << "Data tidak ditemukan." << endl;
+    }
+    
+    return 0;
+}
 ```
 ### Output Unguided 2 :
 
 ##### Output 1
-![Screenshot Output Unguided 3_1](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-5_Modul-5/Output/output-3.png?raw=true)
+![Screenshot Output Unguided 3_1](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-6_Modul-6/Output/output-2.png?raw=true)
 
 Program ini merupakan pengembangan dari struktur Doubly Linked List sebelumnya yang kini mengimplementasikan operasi pencarian data (searching) secara spesifik. Terkait penerapannya, program menggunakan fungsi `findElm` yang memanfaatkan pergeseran pointer `next` untuk melakukan penelusuran elemen secara sekuensial (berurutan) dimulai dari penanda `First` hingga mencapai batas akhir `Nil`. Secara cara kerjanya, program akan meminta pengguna memasukkan target nomor polisi yang dicari, lalu fungsi tersebut akan membandingkan inputan dengan setiap data di dalam list; jika ditemukan kecocokan, program akan langsung mengembalikan alamat memori (address) dari simpul tersebut dan mencetak rincian informasi kendaraannya ke layar utama.
 
@@ -501,25 +664,253 @@ Program ini merupakan pengembangan dari struktur Doubly Linked List sebelumnya y
 
 #### Doublylist.h
 ```C++
+#ifndef DOUBLYLIST_H
+#define DOUBLYLIST_H
+#include <iostream>
+#include <string>
 
+#define Nil NULL
+using namespace std;
+
+struct kendaraan {
+    string nopol;
+    string warna;
+    int thnBuat;
+};
+
+typedef kendaraan infotype;
+typedef struct ElmList *address;
+
+struct ElmList {
+    infotype info;
+    address next;
+    address prev;
+};
+
+struct List {
+    address First;
+    address Last;
+};
+
+void CreateList(List &L);
+address alokasi(infotype x);
+void dealokasi(address &P);
+void printInfo(List L);
+void insertLast(List &L, address P);
+void insertFirst(List &L, address P); 
+bool cekDuplikat(List L, string nopol);
+// Tambahan fungsi untuk soal nomor 2
+address findElm(List L, infotype x);
+// Tambahan prosedur untuk soal nomor 3
+void deleteFirst(List &L, address &P);
+void deleteLast(List &L, address &P);
+void deleteAfter(address Prec, address &P);
+
+#endif
 ```
 #### Doublylist.cpp
 ```C++
+#include <iostream>
+#include "Doublylist.h"
+using namespace std;
 
+void CreateList(List &L) {
+    L.First = Nil;
+    L.Last = Nil;
+}
+
+address alokasi(infotype x) {
+    address P = new ElmList;
+    P->info = x;
+    P->next = Nil;
+    P->prev = Nil;
+    return P;
+}
+
+void dealokasi(address &P) {
+    delete P;
+    P = Nil;
+}
+
+void insertLast(List &L, address P) {
+    if (L.First == Nil) {
+        L.First = P;
+        L.Last = P;
+    } else {
+        P->prev = L.Last;
+        L.Last->next = P;
+        L.Last = P;
+    }
+}
+
+void insertFirst(List &L, address P) {
+    if (L.First == Nil) {
+        L.First = P;
+        L.Last = P;
+    } else {
+        P->next = L.First;
+        L.First->prev = P;
+        L.First = P;
+    }
+}
+
+void printInfo(List L) {
+    address P = L.First;
+    cout << "DATA LIST 1\n\n";
+    while (P != Nil) {
+        cout << "No Polisi : " << P->info.nopol << endl;
+        cout << "Warna     : " << P->info.warna << endl;
+        cout << "Tahun     : " << P->info.thnBuat << endl;
+        P = P->next;
+    }
+}
+
+bool cekDuplikat(List L, string nopol) {
+    address P = L.First;
+    while (P != Nil) {
+        if (P->info.nopol == nopol) {
+            return true;
+        }
+        P = P->next;
+    }
+    return false;
+}
+
+// Tambahan untuk soal nomor 2
+address findElm(List L, infotype x) {
+    address P = L.First;
+    while (P != Nil) {
+        if (P->info.nopol == x.nopol) {
+            return P;
+        }
+        P = P->next;
+    }
+    return Nil; 
+}
+
+// Tambahan untuk soal no 3
+void deleteFirst(List &L, address &P) {
+    P = L.First;
+    if (L.First == L.Last) { 
+        L.First = Nil;
+        L.Last = Nil;
+    } else {
+        L.First = P->next;
+        L.First->prev = Nil;
+        P->next = Nil;
+    }
+}
+
+void deleteLast(List &L, address &P) {
+    P = L.Last;
+    if (L.First == L.Last) {
+        L.First = Nil;
+        L.Last = Nil;
+    } else {
+        L.Last = P->prev;
+        L.Last->next = Nil;
+        P->prev = Nil;
+    }
+}
+
+void deleteAfter(address Prec, address &P) {
+    P = Prec->next;
+    Prec->next = P->next;
+    if (P->next != Nil) {
+        P->next->prev = Prec;
+    }
+    P->next = Nil;
+    P->prev = Nil;
+}
 ```
 #### main.cpp
 ```C++
+#include <iostream>
+#include "Doublylist.h"
+using namespace std;
 
+int main() {
+    List L;
+    CreateList(L);
+    
+    infotype data;
+    address P;
+
+    for (int i = 0; i < 4; i++) {
+        cout << "masukkan nomor polisi: ";
+        cin >> data.nopol;
+        cout << "masukkan warna kendaraan: ";
+        cin >> data.warna;
+        cout << "masukkan tahun kendaraan: ";
+        cin >> data.thnBuat;
+        
+        if (cekDuplikat(L, data.nopol)) {
+            cout << "nomor polisi sudah terdaftar\n\n";
+        } else {
+            P = alokasi(data);
+            insertFirst(L, P); 
+            cout << endl;
+        }
+    }
+    
+    printInfo(L);
+    
+    // Tambahan untuk soal no 2
+    cout << "\n";
+    infotype dataCari;
+    cout << "Masukkan Nomor Polisi yang dicari: ";
+    cin >> dataCari.nopol;
+    cout << "\n";
+    
+    address ketemu = findElm(L, dataCari);
+    
+    if (ketemu != Nil) {
+        cout << "Nomor Polisi \t: " << ketemu->info.nopol << endl;
+        cout << "Warna \t\t: " << ketemu->info.warna << endl;
+        cout << "Tahun \t\t: " << ketemu->info.thnBuat << endl;
+    } else {
+        cout << "Data tidak ditemukan." << endl;
+    }
+
+    // Tambahan untuk soal no 3
+    cout << "\n";
+    infotype hapusData;
+    cout << "Masukkan Nomor Polisi yang akan dihapus: ";
+    cin >> hapusData.nopol;
+    
+    address nodeHapus = findElm(L, hapusData);
+    
+    if (nodeHapus != Nil) {
+        address P_del;
+        if (nodeHapus == L.First) {
+            deleteFirst(L, P_del);
+        } else if (nodeHapus == L.Last) {
+            deleteLast(L, P_del);
+        } else {
+            address Prec = nodeHapus->prev;
+            deleteAfter(Prec, P_del);
+        }
+        
+        dealokasi(P_del);
+        cout << "Data dengan nomor polisi " << hapusData.nopol << " berhasil dihapus.\n\n";
+    } else {
+        cout << "Data tidak ditemukan.\n\n";
+    }
+    
+    printInfo(L);
+    
+    return 0;
+}
 ```
-### Output Unguided 2 :
+### Output Unguided 3 :
 
 ##### Output 1
-![Screenshot Output Unguided 3_1](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-5_Modul-5/Output/output-3.png?raw=true)
+![Screenshot Output Unguided 3_1](https://github.com/BrilyantKeyza/109082500106_Brilyant-Keyza-Hidayat_Struktur-Data/blob/main/Pertemuan-6_Modul-6/Output/output-3.png?raw=true)
 
-Program 
+Program ini merupakan pengembangan struktur Doubly Linked List program sebelumnya yang kini mengimplementasikan operasi penghapusan elemen data secara dinamis. Terkait penerapannya, program ini menggunakan kombinasi tiga operasi sekaligus, yaitu `deleteFirst` untuk mencabut simpul di awal list, `deleteLast` untuk simpul di akhir list, serta `deleteAfter` untuk simpul di tengah dengan memanfaatkan pointer `prev` sebagai acuan posisi data sebelumnya (Prec). Secara cara kerjanya, program akan mencari terlebih dahulu alamat nomor polisi yang ingin dihapus, lalu secara otomatis mengevaluasi posisi node tersebut untuk menentukan prosedur delete mana yang paling tepat dieksekusi guna memutus rangkaian pointer dua arahnya dengan aman, sebelum akhirnya membebaskan memori melalui dealokasi dan mencetak pembaruan sisa data kendaraan ke layar utama.
 
 ## Kesimpulan
-Kesimpulannya pada praktikum Modul 5 ini, pemahaman lanjutan mengenai Singly Linked List sangat penting untuk memperluas kemampuan manipulasi data secara dinamis. Penerapannya sangat bergantung pada penguasaan operasi pencarian (searching) melalui penelusuran pointer secara berurutan, yang mana menjadi fondasi utama untuk mengeksekusi operasi tingkat lanjut lainnya seperti pembaruan (update) data. Penguasaan logika perulangan pada pointer juga sangat diperlukan untuk memecahkan masalah terkait pencarian elemen spesifik maupun penelusuran untuk menghitung total keseluruhan nilai agregasi di dalam list. Secara keseluruhan, penambahan operasi lanjutan ini sebagai penyempurnaan struktur list yang sudah dibuat sebelumnya.
+Kesimpulannya pada praktikum Modul 6, pemahaman mengenai Doubly Linked List sangat penting untuk meningkatkan fleksibilitas navigasi data karena memungkinkan penelusuran secara dua arah (maju dan mundur). Penerapannya sangat bergantung pada penguasaan manajemen pointer ganda pada setiap elemen, yaitu next dan prev, serta pemanfaatan penanda utama First dan Last. Melalui latihan unguided, penguasaan logika perangkaian pointer ganda ini terbukti sangat krusial saat mengeksekusi operasi penyisipan (insert) dan penghapusan (delete) di berbagai posisi baik di awal, di akhir, maupun di tengah list (after/before) karena memori harus diputus dan disambung kembali tanpa memutus rantai data. Secara keseluruhan, implementasi operasi ini ke dalam studi kasus nyata seperti manajemen pendataan kendaraan (unguided) dan barang elektronik (guided) menunjukkan bahwa Doubly Linked List menghasilkan sistem penyimpanan data yang jauh lebih efisien untuk diakses dan dimodifikasi, sekaligus menjadi fondasi yang kuat untuk merancang arsitektur struktur data yang lebih kompleks.
 
 ## Referensi
 [1] Pradhana, R., & Wibowo, S. (2021). Analisis Kinerja dan Optimasi Pencarian Data Dua Arah Menggunakan Struktur Data Doubly Linked List. Jurnal Teknologi Informasi dan Ilmu Komputer (JTIIK), 8(3), 205-212.
