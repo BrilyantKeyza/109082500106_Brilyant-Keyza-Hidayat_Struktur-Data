@@ -6,7 +6,6 @@ int main() {
     cout << "Hello world!" << endl;
     Stack S;
     createStack(S);
-    
     getInputStream(S);
     
     printInfo(S);
